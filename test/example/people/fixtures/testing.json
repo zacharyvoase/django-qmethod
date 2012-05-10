@@ -1,0 +1,233 @@
+[
+    {
+        "fields": {}, 
+        "model": "people.group", 
+        "pk": 1
+    }, 
+    {
+        "fields": {}, 
+        "model": "people.group", 
+        "pk": 2
+    }, 
+    {
+        "fields": {}, 
+        "model": "people.group", 
+        "pk": 3
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 1
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 2
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 3
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 4
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 5
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 6
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 7
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 8
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 1
+        }, 
+        "model": "people.person", 
+        "pk": 9
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 10
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 11
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 12
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 13
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 14
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 15
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 16
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 17
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 2
+        }, 
+        "model": "people.person", 
+        "pk": 18
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 19
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 20
+    }, 
+    {
+        "fields": {
+            "age": 17, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 21
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 22
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 23
+    }, 
+    {
+        "fields": {
+            "age": 18, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 24
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 25
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 26
+    }, 
+    {
+        "fields": {
+            "age": 19, 
+            "group": 3
+        }, 
+        "model": "people.person", 
+        "pk": 27
+    }
+]

@@ -1,0 +1,8 @@
+*.egg-info
+*.pyc
+*.pyo
+.DS_Store
+build
+dist
+MANIFEST
+test/example/*.sqlite3
