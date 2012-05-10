@@ -4,7 +4,7 @@
 import os
 import re
 
-from distutils import setup
+from distutils.core import setup
 
 
 rel_file = lambda *args: os.path.join(os.path.dirname(os.path.abspath(__file__)), *args)
