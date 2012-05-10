@@ -11,6 +11,7 @@ One day, I hope something like this is included in Django core.
 Basic usage is as follows:
 
 ```python
+import cPickle as pickle
 from django.db import models
 from djqmethod import Manager, querymethod
 
@@ -46,6 +47,10 @@ assert isinstance(Person.objects.filter(gender='m').minors(),
 # default manager for that model:
 group = Group.objects.all()[0]
 assert isinstance(group.people.minors(), models.query.QuerySet)
+
+# The QuerySets produced are totally pickle-safe:
+assert isinstance(pickle.loads(pickle.dumps(Person.objects.minors())),
+                  models.query.QuerySet)
 ```
 
 A test project is located in `test/example/`; consult this for a more
