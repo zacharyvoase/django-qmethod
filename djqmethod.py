@@ -7,6 +7,10 @@ from functools import partial
 from django.db import models
 
 
+def attr_error(obj, attr):
+    return AttributeError("%r object has no attribute %r" % (str(type(obj)), attr))
+
+
 class QueryMethod(object):
 
     # Make querymethod objects a little cheaper.
@@ -26,11 +30,10 @@ class QMethodQuerySet(models.query.QuerySet):
     """A QuerySet which delegates to querymethods on its model."""
 
     def __getattr__(self, attr):
-        if hasattr(self.__dict__.get('model', None), attr):
-            qmethod = getattr(self.model, attr)
-            if isinstance(qmethod, QueryMethod):
-                return qmethod.for_query_set(self)
-        return super(QMethodQuerySet, self).__getattr__(attr)
+        qmethod = getattr(self.__dict__.get('model', None), attr, None)
+        if isinstance(qmethod, QueryMethod):
+            return qmethod.for_query_set(self)
+        raise attr_error(self, attr)
 
 
 class Manager(models.Manager):
@@ -43,4 +46,9 @@ class Manager(models.Manager):
         return QMethodQuerySet(model=self.model, using=self._db)
 
     def __getattr__(self, attr):
-        return getattr(self.get_query_set(), attr)
+        if not attr.startswith('_'):
+            try:
+                return getattr(self.get_query_set(), attr)
+            except AttributeError:
+                pass
+        raise attr_error(self, attr)
