@@ -51,7 +51,7 @@ class RelationTest(TestCase):
 
     fixtures = ['testing']
 
-    def test(self):
+    def test_querying(self):
         for group in Group.objects.all():
             self.failUnless(isinstance(
                 group.people.all(),
@@ -72,6 +72,11 @@ class RelationTest(TestCase):
             self.failUnlessEqual(
                 pks(group.people.adults()),
                 pks(group.people.filter(age__gte=18)))
+
+    def test_creation(self):
+        group = Group.objects.get(pk=1)
+        person = group.people.create(age=32)
+        assert person.group_id == group.pk
 
 
 class PickleTest(TestCase):
