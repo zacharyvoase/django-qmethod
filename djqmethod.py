@@ -40,7 +40,7 @@ class Manager(models.Manager):
     use_for_related_fields = True
 
     def get_query_set(self, *args, **kwargs):
-        return QMethodQuerySet(model=self.model)
+        return QMethodQuerySet(model=self.model, using=self._db)
 
     def __getattr__(self, attr):
         return getattr(self.get_query_set(), attr)
