@@ -30,3 +30,7 @@ class Person(models.Model):
     @querymethod
     def adults(query):
         return query.filter(age__gte=18)
+
+    @querymethod
+    def get_for_age(query, age):
+        return query.get_or_create(age=age)

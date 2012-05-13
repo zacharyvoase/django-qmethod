@@ -25,18 +25,23 @@ class QueryMethod(object):
 querymethod = QueryMethod
 
 
-class QMethodQuerySet(models.query.QuerySet):
-
-    """A QuerySet which delegates to querymethods on its model."""
+class QMethodLookupMixin(object):
+    """Delegate missing attributes to querymethods on ``self.model``."""
 
     def __getattr__(self, attr):
-        qmethod = getattr(self.__dict__.get('model', None), attr, None)
+        # Using `object.__getattribute__` avoids infinite loops if the 'model'
+        # attribute does not exist.
+        qmethod = getattr(object.__getattribute__(self, 'model'), attr, None)
         if isinstance(qmethod, QueryMethod):
             return qmethod.for_query_set(self)
         raise attr_error(self, attr)
 
 
-class Manager(models.Manager):
+class QMethodQuerySet(models.query.QuerySet, QMethodLookupMixin):
+    pass
+
+
+class Manager(models.Manager, QMethodLookupMixin):
 
     # If this is the default manager for a model, use this manager class for
     # relations (i.e. `group.people`, see README for details).
@@ -44,11 +49,3 @@ class Manager(models.Manager):
 
     def get_query_set(self, *args, **kwargs):
         return QMethodQuerySet(model=self.model, using=self._db)
-
-    def __getattr__(self, attr):
-        if not attr.startswith('_'):
-            try:
-                return getattr(self.get_query_set(), attr)
-            except AttributeError:
-                pass
-        raise attr_error(self, attr)

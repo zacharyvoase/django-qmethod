@@ -2,7 +2,7 @@
 
 import cPickle as pickle
 
-from django.db import models
+from django.db import IntegrityError, models
 from django.test import TestCase
 
 from people.models import Group, Person
@@ -77,6 +77,19 @@ class RelationTest(TestCase):
         group = Group.objects.get(pk=1)
         person = group.people.create(age=32)
         assert person.group_id == group.pk
+
+    def test_qmethods_get_the_original_object(self):
+        group = Group.objects.get(pk=1)
+        person, created = group.people.get_for_age(72)
+        assert created
+        assert person.age == 72
+        assert person.group_id == group.pk
+
+        # group_id cannot be NULL.
+        with self.assertRaises(IntegrityError) as cm:
+            Person.objects.get_for_age(22)
+        assert "group_id" in cm.exception.message
+        assert "NULL" in cm.exception.message
 
 
 class PickleTest(TestCase):
