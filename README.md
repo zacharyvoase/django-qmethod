@@ -43,8 +43,8 @@ assert isinstance(Person.objects.minors(), models.query.QuerySet)
 assert isinstance(Person.objects.filter(gender='m').minors(),
                   models.query.QuerySet)
 
-# They'll also be available on relations, if they were mixed in to the
-# default manager for that model:
+# They'll also be available on relations, if you use the djqmethod.Manager as
+# the default manager for the related model.
 group = Group.objects.all()[0]
 assert isinstance(group.people.minors(), models.query.QuerySet)
 
